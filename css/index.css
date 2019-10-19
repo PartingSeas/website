@@ -1,0 +1,74 @@
+/* Base style */
+
+html {
+  height: 100%;
+  overflow: hidden;
+}
+img {
+  padding: 10px;
+}
+
+
+/* ID's */
+#container {
+	display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 400px;
+  height: auto;
+}
+
+/* Classes */
+
+/* background color for navbar*/
+.menu {
+  background-color: rgba(#333333, 0.85);
+  overflow: hidden;
+  text-align: center;
+  display: table;
+  margin: 0 auto;
+}
+
+/* Styling for links in navbar */
+.menu a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* color of hover */
+.menu a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* color of active link */
+.menu a.active {
+  background-color: #3c73ad;
+  color: #b1b1b1;
+}
+
+.center{
+  width: 300px;
+  display: table;
+  margin: 0 auto;
+}
+
+.center h1 {
+  text-align: center;
+}
+
+.container{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+.logo {
+  border: 0;
+  padding: 2px;
+  font-size: 30px;
+  text-align: center;
+}

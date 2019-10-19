@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html class="img-no-display"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Contact | Manzel Gomez</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="css/contact.css">
+  <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+  <script type="text/javascript">
+  $(function()
+  {
+      function after_form_submitted(data)
+      {
+          if(data.result == 'success')
+          {
+              $('form#reused_form').hide();
+              $('#success_message').show();
+              $('#error_message').hide();
+          }
+          else
+          {
+              $('#error_message').append('<ul></ul>');
+
+              jQuery.each(data.errors,function(key,val)
+              {
+                  $('#error_message ul').append('<li>'+key+':'+val+'</li>');
+              });
+              $('#success_message').hide();
+              $('#error_message').show();
+
+              //reverse the response on the button
+              $('button[type="button"]', $form).each(function()
+              {
+                  $btn = $(this);
+                  label = $btn.prop('orig_label');
+                  if(label)
+                  {
+                      $btn.prop('type','submit' );
+                      $btn.text(label);
+                      $btn.prop('orig_label','');
+                  }
+              });
+
+          }//else
+      }
+
+  	$('#reused_form').submit(function(e)
+        {
+          e.preventDefault();
+
+          $form = $(this);
+          //show some response on the button
+          $('button[type="submit"]', $form).each(function()
+          {
+              $btn = $(this);
+              $btn.prop('type','button' );
+              $btn.prop('orig_label',$btn.text());
+              $btn.text('Sending ...');
+          });
+
+
+                      $.ajax({
+                  type: "POST",
+                  url: 'handler.php',
+                  data: $form.serialize(),
+                  success: after_form_submitted,
+                  dataType: 'json'
+              });
+
+        });
+  });
+  </script>
+
+  <style>
+
+  /* background styling and loading js */
+
+  body {
+    background: url("web_images/bakg.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+  }
+  .loading{
+      background: url("web_images/Preloader_2.gif") center no-repeat #fff;
+  }
+  </style>
+  </head>
+
+  <body>
+      <!-- Menu -->
+      <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="profile.html">Profile</a>
+        <a href="news.html">News</a>
+        <a class="active" href="contact.html">Contact</a>
+      </div>
+    <div class="container">
+            <div class="section animated bounceInLeft">
+                <div class="brandname">
+                    <h3>Manzel Gomez</h3>
+                    <ul>
+                        <li>me@manzelg.com</li>
+                        <li>manzelg.com</li>
+                        <br>
+                        <li> Please email me about potential projects and/or questions about the website!</li>
+                    </ul>
+                </div>
+                <div class="contact">
+                    <h3>Email Me</h3>
+                    <form action="#">
+                        <p>
+                            <label for="#">Name</label>
+                            <input type="text" name="name" required>
+                        </p>
+                        <p>
+                            <label for="#">Company</label>
+                            <input type="text" name="company">
+                        </p>
+                        <p>
+                            <label for="#">Email Address</label>
+                            <input type="email" name="email" required>
+                        </p>
+                        <p>
+                            <label for="#">Phone Number</label>
+                            <input type="text" name="phone" required>
+                        </p>
+                        <p class="full">
+                            <label for="#">Message</label>
+                            <textarea name="message" cols="30" rows="5" required></textarea>
+                        </p>
+                        <p class="full">
+                            <button type="submit">Submit</button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+      <script src="javascript/function.js"></script>
+  </body>
+</html>

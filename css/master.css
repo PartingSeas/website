@@ -1,0 +1,66 @@
+/* elements and body */
+html {
+  background-color: black;
+}
+
+a {
+  color: white;
+}
+
+img {
+  width: 80%;
+  height: auto;
+}
+footer {
+  color: white;
+  text-align: center;
+}
+
+
+/* classes and id's */
+
+.main {
+  width: 40em;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 80%;
+  font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  background-color: #ffeecc;
+  border: 1px solid #eeddbb;
+  padding: 1em;
+}
+
+.content {
+  display: grid;
+  grid-template-areas:
+  'photo menu';
+  grid-gap: 10px;
+  background-color: black;
+  height: auto;
+  width: 40em;
+}
+.options {
+  display: grid;
+  grid-template-areas:
+  'web'
+  'photos'
+  'me';
+  grid-gap: 10px;
+  background-color: black;
+  height: auto;
+  width: 5em;
+  overflow-wrap: break-word;
+}
+
+.photo { grid-area: photo;}
+.menu { grid-area: menu;}
+.web { grid-area: web;}
+.photos { grid-area: photos;}
+.me { grid-area: me;}
+
+.menu > div {
+  background-color: rgba(0, 0, 0, 1);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
